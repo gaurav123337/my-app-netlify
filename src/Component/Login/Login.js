@@ -1,12 +1,21 @@
 import React, {
   Component
 } from "react";
+import { Redirect } from 'react-router';
+import Search from '../Search';
 
 import {getAllStarwarsValue} from '../utility/utility';
 import history from '../../history';
 const URL = "https://swapi.dev/api/planets/";
 
 class Login extends Component {
+   constructor(props){
+      super();
+      this.state={
+         isLoggedIn: false
+      }
+   }
+
 login = (e) =>{
   e.preventDefault();
   const {uname, pwd} = this.state;
@@ -15,13 +24,16 @@ login = (e) =>{
   let people = JSON.parse(localStorage.getItem('people'));
   people.some((currVal) => {
      if(uname === currVal.name && pwd === currVal.birth_year ){
-        this.redirectToSearch();
+        // this.redirectToSearch();
+        this.setState({
+           isLoggedIn: true
+        })
       }
   })
 }
 
 redirectToSearch = () => {
-   console.log('Called search')
+   console.log('Called search', history)
   history.push('/Search');
 }
 
@@ -32,6 +44,7 @@ change =(e) => {
 }
 
   render() {
+     console.log(this.state.isLoggedIn, 'isLoggedIn')
     return (
           <>
       <div className="sidenav">
@@ -56,6 +69,9 @@ change =(e) => {
                </form>
             </div>
          </div>
+         {
+            this.state.isLoggedIn === true ?  <Redirect to="/Search" /> : null
+         }
       </div>
       </>
     )
