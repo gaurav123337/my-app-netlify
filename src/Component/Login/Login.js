@@ -16,11 +16,12 @@ class Login extends Component {
       }
    }
 
-login = (e) =>{
+login = async(e) =>{
   e.preventDefault();
   const {uname, pwd} = this.state;
   console.log(uname, 'uname', pwd, 'pwd')
-  getAllStarwarsValue(URL);
+  let dataVal = await getAllStarwarsValue(URL);
+  console.log(dataVal, 'dataVal');
   let people = JSON.parse(localStorage.getItem('people'));
   people.some((currVal) => {
      if(uname === currVal.name && pwd === currVal.birth_year ){
