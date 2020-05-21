@@ -23,7 +23,8 @@ login = async(e) =>{
   let dataVal = await getAllStarwarsValue(URL);
   console.log(dataVal, 'dataVal');
   let people = JSON.parse(localStorage.getItem('people'));
-  people.some((currVal) => {
+
+  dataVal.some((currVal) => {
      if(uname === currVal.name && pwd === currVal.birth_year ){
         // this.redirectToSearch();
         this.setState({
