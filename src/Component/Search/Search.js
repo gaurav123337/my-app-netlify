@@ -5,7 +5,7 @@ import React, {
 import {getAllStarwarsValue} from '../utility/utility';
 import history from '../../history';
 
-const URL = "http://swapi.dev/api/planets/";
+const URL = "https://swapi.dev/api/planets/";
 
 
 class Search extends Component {

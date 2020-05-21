@@ -4,11 +4,11 @@ import React, {
 
 import {getAllStarwarsValue} from '../utility/utility';
 import history from '../../history';
-const URL = "http://swapi.dev/api/planets/";
+const URL = "https://swapi.dev/api/planets/";
 
 class Login extends Component {
 login = (e) =>{
-  //e.preventDefault();
+  e.preventDefault();
   const {uname, pwd} = this.state;
   console.log(uname, 'uname', pwd, 'pwd')
   getAllStarwarsValue(URL);
