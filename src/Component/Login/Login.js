@@ -72,7 +72,7 @@ change =(e) => {
             </div>
          </div>
          {
-            this.state.isLoggedIn === true ?  <Redirect to="/Search" /> : null
+            this.state.isLoggedIn === true ?  <Redirect to="/Search" /> : <div>{'Login Please'}</div>
          }
       </div>
       </>
