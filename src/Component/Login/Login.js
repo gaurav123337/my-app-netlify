@@ -12,7 +12,8 @@ class Login extends Component {
    constructor(props){
       super();
       this.state={
-         isLoggedIn: false
+         isLoggedIn: false,
+         count : 0
       }
    }
 
@@ -25,10 +26,14 @@ login = async(e) =>{
   let people = JSON.parse(localStorage.getItem('people'));
 
   dataVal.some((currVal) => {
+     this.setState({
+        count: this.state.count+1
+     });
      if(uname === currVal.name && pwd === currVal.birth_year ){
         // this.redirectToSearch();
         this.setState({
            isLoggedIn: true
+
         }, () => {
            console.log(this.state.isLoggedIn)
         })
@@ -74,7 +79,7 @@ change =(e) => {
             </div>
          </div>
          {
-            this.state.isLoggedIn === true ?  <Redirect to="/Search" /> : <div>{'Login Please'}</div>
+            (this.state.isLoggedIn === true) ?  <Redirect to="/Search" /> : (this.state.count > 0 ? <div>{'Login Please'}</div> : null)
          }
       </div>
       </>
