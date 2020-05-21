@@ -6,7 +6,7 @@ import Search from '../Search';
 
 import {getAllStarwarsValue} from '../utility/utility';
 import history from '../../history';
-const URL = "https://swapi.dev/api/planets/";
+const URL = "https://swapi.dev/api/people/";
 
 class Login extends Component {
    constructor(props){
@@ -29,6 +29,8 @@ login = async(e) =>{
         // this.redirectToSearch();
         this.setState({
            isLoggedIn: true
+        }, () => {
+           console.log(this.state.isLoggedIn)
         })
       }
   })
